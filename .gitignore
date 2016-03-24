@@ -15,3 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
+
+db/migrate/20160322220405_add_user_to_posts.rb
