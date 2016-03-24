@@ -1,0 +1,16 @@
+<h1>Users#new</h1>
+<%= semantic_form_for [@user], url:'/users' do |f| %>
+
+    <%= f.inputs :email, :password, :password_confirmation ,:name => "Auth" %>
+
+
+    <%= f.inputs for: [:profile, f.object.profile || Profile.new] do |profile| %>
+    <%= profile.input :firstname %>
+    <%= profile.input :lastname %>
+<% end %>
+
+    <%= f.actions do %>
+        <%= f.action :submit, :as => :input %>
+    <% end %>
+<% end %>
+

@@ -1,0 +1,8 @@
+<h1>Profiles#index</h1>
+<ul>
+  <li>firstname : <%= @profile.firstname %> </li>
+  <%= image_tag @profile.avatar.url(:thumb) %>
+  <li>lastname : <%= @profile.lastname %> </li>
+  <li>about me: <%= @profile.about_me%> </li>
+  <li><%= link_to('update profile',edit_profile_path(@profile))%></li>
+</ul>

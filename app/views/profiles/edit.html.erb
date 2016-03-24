@@ -1,0 +1,11 @@
+<h1>Profiles#update</h1>
+<%= semantic_form_for @profile do |form| %>
+    <%= form.inputs do -%>
+        <%= form.input :firstname %>
+        <%= form.input :lastname %>
+        <%= form.input :about_me %>
+        <%= form.input :avatar, as: :file %>
+        <%= form.action :submit %>
+    <% end %>
+
+<% end %>

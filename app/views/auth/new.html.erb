@@ -1,0 +1,8 @@
+<%= semantic_form_for 'auth' , url:'' do |f| %>
+    <%= f.inputs :name => 'Login Details' do %>
+        <%= f.input :email %>
+        <%= f.input :password %>
+        <%= f.action :submit, :as => :button %>
+    <% end %>
+
+<% end %>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bloggy</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</head>
+<body>
+
+<%= nav_bar fixed: :top, brand: "BLOGIN" do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", root_path %>
+    <% if current_user %>
+        <%= menu_item "Log Out", '/logout' %>
+        <%= menu_item 'Mon profile',profiles_path%>
+        <%= menu_item 'Ajouter un article',new_post_path%>
+    <% else %>
+        <%= menu_item "Log In", '/login' %>
+        <%= menu_item "Sign In", '/signup' %>
+    <% end %>
+    <% end %>
+<% end %>
+<div class="container">
+<%= yield %>
+</div>
+
+</body>
+</html>
