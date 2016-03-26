@@ -33,6 +33,7 @@ gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-boot
 gem "therubyracer"
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'paperclip'
+gem 'acts-as-taggable-on', '~> 3.4'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'cancancan', '~> 1.10'

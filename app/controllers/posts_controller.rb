@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
   def index
-    @posts = Post.all
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -39,6 +43,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :avatar)
+    params.require(:post).permit(:title, :text, :avatar,:tag_list)
   end
 end
