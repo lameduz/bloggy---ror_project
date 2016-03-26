@@ -7,41 +7,18 @@
       <%= link_to tag.name, tag_path(tag.name), class: css_class %>
   <% end %>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:tag_list) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:text) %></th>
-      <th><%= model_class.human_attribute_name(:avatar) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
+
+
+  <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.id, post_path(post) %></td>
-        <td>Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-        <td><%= post.title %></td>
-        <td><%= post.text %></td>
-        <td><%= image_tag post.avatar.url(:medium) %></td>
-        <td><%=l post.created_at %></td>
-        <td>
-          <% if can? :crud, post %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_post_path(post), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      post_path(post),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-          <% end %>
-        </td>
-      </tr>
+    <div class="box col3">
+
+      <%= link_to post_path(post) do %>
+           <%= image_tag post.avatar.url(:medium) %>
+      <% end %>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_post_path,
             :class => 'btn btn-primary' %>

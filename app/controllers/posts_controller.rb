@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
   def index
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])

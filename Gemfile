@@ -34,6 +34,7 @@ gem "therubyracer"
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'paperclip'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'masonry-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'cancancan', '~> 1.10'
