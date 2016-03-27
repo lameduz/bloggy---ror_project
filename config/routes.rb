@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'comments/create'
 
   #Home Page
@@ -17,11 +19,18 @@ Rails.application.routes.draw do
 
   #Routes pour le CRUD articles et commentaires
   resources :posts do
+    member do
+      put 'like', to: "posts#like"
+    end
     resources :comments
+
   end
   #Routes pour le profile
   resources :profiles
 
+  #Routes pour les tags
   get 'tags/:tag', to: 'posts#index', as: :tag
+
+  #Routes pour like
 
 end

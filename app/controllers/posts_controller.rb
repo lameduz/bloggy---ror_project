@@ -2,10 +2,10 @@ class PostsController < ApplicationController
   def index
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])
-      @posts = @posts.order("title").page(params[:page]).per(6)
+      @posts = @posts.order("title").page(params[:page]).per(12)
     else
       #@posts = Post.all
-      @posts = Post.order("title").page(params[:page]).per(6)
+      @posts = Post.order("title").page(params[:page]).per(12)
     end
 
   end
@@ -39,6 +39,25 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       redirect_to edit_post_path
+    end
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    @post.liked_by current_user
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render layout: false }
+    end
+  end
+  def dislike
+    @post = Post.find(params[:id])
+    @post.downvote_from current_user
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render layout: false }
     end
   end
 

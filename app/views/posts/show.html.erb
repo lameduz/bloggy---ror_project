@@ -13,8 +13,16 @@
 </dl>
 <h2>Add a comment:</h2>
 <%= render @post.comments %>
-
 <%= render 'comments/form' %>
+<div class="vote_count">
+  <p>Nombre de like : <%= @post.get_likes.size %></p>
+
+</div>
+<div class="votes">
+  <% if !current_user.liked? @post %>
+      <%= link_to 'like post', like_post_path(@post), method: :put ,remote: true, class:'like_post'%>
+  <% end %>
+</div>
 
 <% if can? :crud, @post %>
     <%= link_to t('.back', :default => t("helpers.links.back")),

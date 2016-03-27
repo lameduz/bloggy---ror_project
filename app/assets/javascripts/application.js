@@ -14,5 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require masonry/jquery.masonry
+//= require masonry/jquery.infinitescroll
+//= require posts
 //= require_tree .
+
 
