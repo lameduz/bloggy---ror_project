@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
   #Home Page
   root 'posts#index'
 
@@ -13,9 +15,10 @@ Rails.application.routes.draw do
   #Route pour déconnecter l'utilisateur
   get '/logout' => 'auth#destroy'
 
-  #Routes pour le CRUD articles
-  resources :posts
-
+  #Routes pour le CRUD articles et commentaires
+  resources :posts do
+    resources :comments
+  end
   #Routes pour le profile
   resources :profiles
 

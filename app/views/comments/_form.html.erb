@@ -1,0 +1,10 @@
+<%= semantic_form_for ([@post,@post.comments.build]) do |f| %>
+
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+
+    <%= f.actions do %>
+        <%= f.action :submit, :as => :input %>
+    <% end %>
+<% end %>

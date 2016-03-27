@@ -2,9 +2,12 @@ class PostsController < ApplicationController
   def index
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])
+      @posts = @posts.order("title").page(params[:page]).per(6)
     else
-      @posts = Post.all
+      #@posts = Post.all
+      @posts = Post.order("title").page(params[:page]).per(6)
     end
+
   end
 
   def new

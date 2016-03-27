@@ -11,6 +11,10 @@
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
   <dd><%= image_tag @post.avatar.url(:medium) %></dd>
 </dl>
+<h2>Add a comment:</h2>
+<%= render @post.comments %>
+
+<%= render 'comments/form' %>
 
 <% if can? :crud, @post %>
     <%= link_to t('.back', :default => t("helpers.links.back")),
