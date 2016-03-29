@@ -1,6 +1,9 @@
 class ProfilesController < ApplicationController
   def index
     @profile = Profile.find_by_user_id(current_user)
+    @posts = @profile.user.posts
+    @liked_posts = @profile.user.find_voted_items
+
     #@profile = Profile.find_by_user_id(current_user)
   end
 
@@ -17,6 +20,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = Profile.find(params[:id])
+    @posts = @profile.user.posts
+    @liked_posts = @profile.user.find_voted_items
+  end
   private
     def profile_params
     params.require(:profile).permit(:firstname,:lastname,:about_me,:avatar)

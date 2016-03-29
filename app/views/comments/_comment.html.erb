@@ -1,8 +1,2 @@
- <p>
-   <strong>User:</strong>
-   <%= comment.user.email%>
- </p>
-  <p>
-   <strong>Comment:</strong>
-      <%= comment.body %>
-    </p>
+<p><span class="bold"><%=comment.user.email%></span> <%= comment.created_at%></p>
+<p><%=comment.body%></p>

@@ -1,0 +1,29 @@
+<div id="profil">
+  <div class="row">
+    <div class="avatar-circle">
+      <%= image_tag @profile.avatar.url %>
+      <!-- <%= image_tag("missing.png", :alt => "missing") %> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="profil_name">
+      <h3><%= @profile.firstname %> <%= @profile.lastname %></h3>
+      <span>(<%= link_to('éditer votre profil',edit_profile_path(@profile))%>)</span>
+    </div>
+    <p>"<%= @profile.about_me%>"</p>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">
+      <h4><span class="bold"><%=@profile.user.votes.count %> </span><%= fa_stacked_icon "heart", base: "square-o"%></h4>
+      <%= render partial: "profiles/liked_post", collection: @liked_posts%>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-5">
+      <h4><span class="bold"><%= @profile.user.posts.count %></span>     <%= fa_stacked_icon "photo", base: "square-o"%>
+        photos postées</h4>
+      <%= render partial: "profiles/posted_post", collection: @posts%>
+    </div>
+  </div>
+</div>
+
+

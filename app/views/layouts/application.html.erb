@@ -6,23 +6,22 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'ajax_call', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
   <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
 </head>
 <body>
 
-<%= nav_bar fixed: :top, brand: "BLOGIN" do %>
+<%= nav_bar fixed: :top, brand: "TAGIT" do %>
     <%= menu_group do %>
-        <%= menu_item "Home", root_path %>
+        <%= menu_item "Accueil", root_path %>
     <% if current_user %>
-        <%= menu_item "Log Out", '/logout' %>
+        <%= menu_item "Déconnexion", '/logout' %>
         <%= menu_item 'Mon profile',profiles_path%>
-        <%= menu_item 'Ajouter un article',new_post_path%>
+        <%= menu_item 'Ajouter une photo',new_post_path%>
     <% else %>
-        <%= menu_item "Log In", '/login' %>
-        <%= menu_item "Sign In", '/signup' %>
+        <%= menu_item "Connexion", '/login' %>
+        <%= menu_item "Inscription", '/signup' %>
     <% end %>
     <% end %>
 <% end %>

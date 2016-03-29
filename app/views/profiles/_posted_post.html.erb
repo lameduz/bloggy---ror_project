@@ -1,0 +1,10 @@
+<div class="box col-lg-2">
+  <%= link_to post_path(posted_post) do %>
+      <div class="overlay-container">
+        <%= image_tag posted_post.avatar.url(:original) %>
+        <div class="overlay-background">
+          <%= posted_post.user.email %>
+        </div>
+      </div>
+  <% end %>
+</div>

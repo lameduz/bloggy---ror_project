@@ -1,7 +1,11 @@
-<h1>Users#new</h1>
-<%= semantic_form_for [@user], url:'/users' do |f| %>
 
-    <%= f.inputs :email, :password, :password_confirmation ,:name => "Auth" %>
+  <div class="row">
+<div class="col-lg-6">
+<%= semantic_form_for [@user], url:'/users', class: 'form' do |f| %>
+
+    <%= f.input :email, :input_html => { :class => 'form-control'} %> %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
 
 
     <%= f.inputs for: [:profile, f.object.profile || Profile.new] do |profile| %>
@@ -13,4 +17,6 @@
         <%= f.action :submit, :as => :input %>
     <% end %>
 <% end %>
+  </div>
+    </div>
 

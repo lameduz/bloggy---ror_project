@@ -28,6 +28,7 @@ gem 'formtastic', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_votable', '~> 0.10.0'
+gem "font-awesome-rails"
 
 #gem 'materialize-sass'
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'master'

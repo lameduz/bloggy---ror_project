@@ -1,3 +1,78 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.label{
+	color:#333 !important;
+}
+
+fieldset {
+	border:none !important;
+}
+
+#profil li{
+	float:left;
+	width:200px;
+}
+
+.avatar-circle{
+	width:200px;
+	margin:0 auto;
+}
+
+.avatar-circle img{
+	width:200px;
+	height:200px;
+	border: 1px solid transparent;
+	border-radius:50%;
+}
+
+.profil_name{
+	text-align:center;
+}
+
+#profil h3{
+	display: inline-block;
+    margin-left: 150px;
+}
+
+#profil p{
+	text-align:center;
+	color:#AAA;
+}
+
+#profil h4{
+	text-align:center;
+	padding-bottom:10px;
+	border-bottom: 2px solid #000;
+}
+
+
+// EDIT 
+
+#edit_profil{
+	margin-top:20px;
+}
+
+.edit_avatar{
+	margin:0 !important;
+	float:left;
+}
+
+#edit_profil input[type="text"]{
+	border:1px solid;
+	padding-left:10px;
+}
+
+#edit_profil input[type="submit"]{
+	background:none;
+	border:none;
+}
+
+#profile_submit_action{
+	text-align: center;
+    padding: 5px;
+    background-color: grey;
+    color: #FFF;
+    margin-top: 50px;
+}

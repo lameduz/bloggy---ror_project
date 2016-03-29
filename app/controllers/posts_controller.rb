@@ -2,10 +2,10 @@ class PostsController < ApplicationController
   def index
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])
-      @posts = @posts.order("title").page(params[:page]).per(12)
+      @posts = @posts.order("title").page(params[:page]).per(8)
     else
       #@posts = Post.all
-      @posts = Post.order("title").page(params[:page]).per(12)
+      @posts = Post.order("title").page(params[:page]).per(8)
     end
 
   end
@@ -58,6 +58,12 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :back }
       format.js { render layout: false }
+    end
+  end
+  def destroy
+    @post = Post.find(params[:id])
+    if@post.destroy
+      redirect_to profile_path(@post.user.profile)
     end
   end
 

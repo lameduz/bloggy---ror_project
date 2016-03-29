@@ -1,36 +1,75 @@
 <%- model_class = Post -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+<div id="single_post">
+  <!-- <div class="page-header">
+    <h1><%= t '.title', :default => model_class.model_name.human.titleize %></h1>
+  </div> -->
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @post.avatar.url(:original) %>
+      <% if can? :crud, @post %>
+          <%= link_to t('.destroy', :default => t("Supprimer la photo")),
+                      post_path(@post),
+                      :method => :delete,
+                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn btn-xs ' %>
+      <% end %>
+    </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @post.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:text) %>:</strong></dt>
-  <dd><%= @post.text %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= image_tag @post.avatar.url(:medium) %></dd>
-</dl>
-<h2>Add a comment:</h2>
-<%= render @post.comments %>
-<%= render 'comments/form' %>
-<div class="vote_count">
-  <p>Nombre de like : <%= @post.get_likes.size %></p>
+    <div class="col-md-4 ">
+      <h2><%= @post.title %></h2>
+      <p><%= @post.text %></p>
+      <%= link_to @post.user.email, profile_path(@post.user.profile) %>
+      <div class="votes">
+
+
+
+          <div class="vote_count">
+          <span><%= fa_stacked_icon "heart", base: "square-o" %>
+          <%= @post.get_likes.size %>
+          </span>
+        </div>
+
+
+        <% if current_user %>
+            <% if !current_user.liked? @post %>
+
+                <%= link_to like_post_path(@post), method: :put, remote: true, class: 'like_post' do %>
+                    <span><%= fa_stacked_icon "heart", base: "square-o" %>:</span>
+                <% end %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <p><%= image_tag @post.user.profile.avatar.url, class: 'img-circle avatar' %></p>
+    </div>
+  </div>
+  <div class="row">
+
+
+    <div class="pull-right single_post_tags">TAGS : yoga, meditation, keywords</div>
+  </div>
+  <hr>
+  <div class="row">
+
+    <div class="col-md-12 bg_comments">
+      <h4>Commentaires (<%= @post.comments.count %>) :</h4>
+      <div class="bloc_comment">
+        <%= render @post.comments %>
+      </div>
+    </div>
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form' %>
+  </div>
+  <!-- <dl class="dl-horizontal">
+    <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+    <dd><%= @post.title %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:text) %>:</strong></dt>
+    <dd><%= @post.text %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
+    <dd><%= image_tag @post.avatar.url %></dd>
+  </dl> -->
+
 
 </div>
-<div class="votes">
-  <% if !current_user.liked? @post %>
-      <%= link_to 'like post', like_post_path(@post), method: :put ,remote: true, class:'like_post'%>
-  <% end %>
-</div>
-
-<% if can? :crud, @post %>
-    <%= link_to t('.back', :default => t("helpers.links.back")),
-              posts_path, :class => 'btn btn-default'  %>
-    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_post_path(@post), :class => 'btn btn-default btn-xs' %>
-    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                post_path(@post),
-                :method => :delete,
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                :class => 'btn btn-xs btn-danger' %>
-<% end %>

@@ -4,5 +4,8 @@
     <data-source name="Rails bloggy: development" uuid="615089cf-f214-4519-b2ad-09aa6bc3f025">
       <auth-required>false</auth-required>
     </data-source>
+    <data-source name="Rails bloggy: test" uuid="e7f7bec0-fb49-4e94-a5f0-3897e46f7f6f">
+      <auth-required>false</auth-required>
+    </data-source>
   </component>
 </project>
