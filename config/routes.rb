@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
   end
   #Routes pour le profile
-  resources :profiles
+  resources :profiles do
+    resources :posts
+  end
 
   #Routes pour les tags
   get 'tags/:tag', to: 'posts#index', as: :tag

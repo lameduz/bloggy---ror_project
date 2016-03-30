@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Bloggy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'ajax_call', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,20 +13,29 @@
 <body>
 
 <%= nav_bar fixed: :top, brand: "TAGIT" do %>
+
     <%= menu_group do %>
-        <%= menu_item "Accueil", root_path %>
-    <% if current_user %>
-        <%= menu_item "Déconnexion", '/logout' %>
-        <%= menu_item 'Mon profile',profiles_path%>
-        <%= menu_item 'Ajouter une photo',new_post_path%>
-    <% else %>
-        <%= menu_item "Connexion", '/login' %>
-        <%= menu_item "Inscription", '/signup' %>
-    <% end %>
+        <% if current_user %>
+            <li>
+              <div id="custom-search-input">
+                <%= semantic_form_for(:search, :html => { :method => :get }) do |f| %>
+                    <%= f.inputs do %>
+                        <%= f.input :q, :as => :search, :label => false, :input_html => { :name => "q" } %>
+                    <% end %>
+                <% end %>
+              </div>
+            </li>
+            <%= menu_item 'Mon profile', profiles_path %>
+            <%= menu_item 'Ajouter une photo', new_post_path %>
+
+        <% else %>
+            <%= menu_item "Connexion", '/login' %>
+            <%= menu_item "Inscription", '/signup' %>
+        <% end %>
     <% end %>
 <% end %>
 <div class="container">
-<%= yield %>
+  <%= yield %>
 </div>
 
 </body>

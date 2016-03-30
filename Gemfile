@@ -38,6 +38,8 @@ gem 'paperclip'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'masonry-rails'
 gem 'kaminari'
+gem "algoliasearch-rails"
+gem 'search_cop'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'cancancan', '~> 1.10'

@@ -3,15 +3,17 @@ class PostsController < ApplicationController
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])
       @posts = @posts.order("title").page(params[:page]).per(8)
+    elsif params[:q]
+      @posts = Post.search(params[:q]).page(params[:page]).per(8)
     else
       #@posts = Post.all
       @posts = Post.order("title").page(params[:page]).per(8)
     end
-
   end
 
+
   def new
-  @post = Post.new
+    @post = Post.new
   end
 
   def create
@@ -21,7 +23,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post
     else
-      redirect_to new_post_path
+      render 'new'
     end
   end
 
@@ -51,6 +53,7 @@ class PostsController < ApplicationController
       format.js { render layout: false }
     end
   end
+
   def dislike
     @post = Post.find(params[:id])
     @post.downvote_from current_user
@@ -60,9 +63,10 @@ class PostsController < ApplicationController
       format.js { render layout: false }
     end
   end
+
   def destroy
     @post = Post.find(params[:id])
-    if@post.destroy
+    if @post.destroy
       redirect_to profile_path(@post.user.profile)
     end
   end
@@ -70,6 +74,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :avatar,:tag_list)
+    params.require(:post).permit(:title, :text, :avatar, :tag_list)
   end
 end

@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_user_id(current_user)
     @posts = @profile.user.posts
     @liked_posts = @profile.user.find_voted_items
-
     #@profile = Profile.find_by_user_id(current_user)
   end
 

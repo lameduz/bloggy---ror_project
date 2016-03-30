@@ -58,6 +58,12 @@ GEM
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
     acts_as_votable (0.10.0)
+    algoliasearch (1.7.0)
+      httpclient (~> 2.4)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.14.1)
+      algoliasearch (>= 1.2.14)
+      json (>= 1.5.1)
     arel (6.0.3)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
@@ -87,6 +93,7 @@ GEM
       actionpack (>= 3.2.13)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    httpclient (2.7.1)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -127,6 +134,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    polyglot (0.3.5)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -168,6 +176,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    search_cop (1.0.6)
+      treetop
     spring (1.6.4)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -183,6 +193,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    treetop (1.6.5)
+      polyglot (~> 0.3)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -201,6 +213,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   acts_as_votable (~> 0.10.0)
+  algoliasearch-rails
   bcrypt (~> 3.1.7)
   byebug
   cancancan (~> 1.10)
@@ -216,6 +229,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  search_cop
   spring
   sqlite3
   therubyracer

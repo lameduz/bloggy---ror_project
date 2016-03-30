@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="profil_name">
 			<h3><%= @profile.firstname %> <%= @profile.lastname %></h3>
-			<span>(<%= link_to('éditer votre profil',edit_profile_path(@profile))%>)</span>
+			<span>(<%= link_to('éditer votre profil',edit_profile_path(@profile)) +' / '+ link_to('déconnexion','/logout')%>)</span>
 		</div>
 		<p>"<%= @profile.about_me%>"</p>	
 	</div>
@@ -20,7 +20,7 @@
     <div class="col-lg-2"></div>
 		<div class="col-lg-5">
 			<h4><span class="bold"><%= @profile.user.posts.count %></span>     <%= fa_stacked_icon "photo", base: "square-o"%>
-        photos postées</h4>
+        </h4>
       <%= render partial: "profiles/posted_post", collection: @posts%>
 		</div>
 	</div>
